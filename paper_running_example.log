@@ -1,0 +1,188 @@
+--- Running Single Test Case (Heavy UAV) ---
+Generating instance with seed 42...
+(Note: Using HEAVY UAV with 3970Wh battery)
+   - Instance generated in 0 ms
+
+--- 📜 Problem Instance Details (Seed 42) ---
+
+UAV Parameters:
+  Base Mass:     42.50 kg
+  Max Battery:   3970.00 Wh
+  Groundspeed:   15.00 m/s
+  P_exec:        17000.00 kW
+  P_wait:        15880.00 kW
+  k1, k2, k3:    20.56, 0.12, 5620.00
+
+Locations:
+  ID    | Type          | X          | Y
+  ---------------------------------------------
+  0     | Start Depot   | 0.00       | 0.00
+  1     | Task 1        | 4444.10    | 2479.00
+  2     | Task 2        | 234.55     | 6351.02
+  3     | Task 3        | 5923.22    | 4402.32
+  4     | Task 4        | 211.20     | 2982.64
+  5     | Task 5        | 1431.15    | 5562.27
+  6     | Task 6        | 3841.02    | 606.50
+  7     | Task 7        | 6590.05    | 3025.79
+  8     | Task 8        | 2089.97    | 9066.26
+  9     | Task 9        | 8097.62    | 3045.92
+  10    | Task 10       | 1582.41    | 6848.02
+  11    | End Depot     | 0.00       | 0.00
+  12    | Charger 1     | 5000.00    | 5000.00
+  13    | Charger 2     | 10000.00   | 5000.00
+
+Task Details:
+  ID    | Payload (kg) | Exec (s)   | Release (s)   | Deadline (s)
+  ----------------------------------------------------------------------
+  1     | 0.52         | 72.00      | 1243.73       | 8443.73
+  2     | 0.73         | 72.00      | 2418.27       | 9618.27
+  3     | 0.71         | 72.00      | 3494.02       | 10694.02
+  4     | 0.81         | 72.00      | 4585.99       | 11785.99
+  5     | 0.76         | 72.00      | 5845.49       | 13045.49
+  6     | 1.04         | 72.00      | 7061.49       | 14261.49
+  7     | 0.94         | 72.00      | 8205.62       | 15405.62
+  8     | 0.77         | 72.00      | 9380.18       | 16580.18
+  9     | 0.62         | 72.00      | 10629.92      | 17829.92
+  10    | 1.04         | 72.00      | 12058.49      | 19258.49
+
+Charger Details:
+  ID    | R1, R2, R3 (Wh/hr)
+  ----------------------------------------
+  1     | 9061.45, 4530.73, 2265.36
+  2     | 6540.01, 3270.01, 1635.00
+
+Wind Grid:
+  Area Dimensions: 15000.00m (W) x 15000.00m (H)
+  Grid Size:       4 cols x 4 rows
+  Zone Size:       3750.00m (W) x 3750.00m (H)
+  (Row, Col) | Speed (m/s)  | Direction (rad) | Vx (E+/W-)   | Vy (N+/S-)
+  ----------------------------------------------------------------------
+  (0, 0)     | 6.90         | 3.33            | -6.78        | -1.28
+  (0, 1)     | 9.03         | 3.68            | -7.76        | -4.62
+  (0, 2)     | 6.17         | 2.35            | -4.34        | 4.38
+  (0, 3)     | 7.75         | 2.95            | -7.61        | 1.49
+  (1, 0)     | 8.79         | 3.17            | -8.78        | -0.28
+  (1, 1)     | 6.14         | 3.08            | -6.13        | 0.38
+  (1, 2)     | 8.04         | 2.93            | -7.87        | 1.67
+  (1, 3)     | 7.14         | 3.10            | -7.14        | 0.33
+  (2, 0)     | 8.44         | 3.20            | -8.43        | -0.47
+  (2, 1)     | 6.46         | 3.13            | -6.46        | 0.09
+  (2, 2)     | 10.27        | 2.94            | -10.05       | 2.10
+  (2, 3)     | 7.79         | 3.89            | -5.69        | -5.32
+  (3, 0)     | 3.95         | 3.45            | -3.76        | -1.19
+  (3, 1)     | 10.24        | 2.71            | -9.30        | 4.29
+  (3, 2)     | 10.26        | 2.99            | -10.14       | 1.55
+  (3, 3)     | 8.75         | 2.69            | -7.86        | 3.84
+--------------------------------------------------
+
+Creating solver with 20 charge levels.
+Validating...
+Instance is feasible. Starting precomputation and solver...
+Precomputing (Sparse Lookups, Heuristics & Memo)...
+   - Precomputation finished in 153 ms
+Running solver...
+Solver finished in 144 ms.
+SUCCESS: Solution found!
+Total Energy Cost: 59752525.98 Joules
+Total Energy Cost: 16597.92 Wh
+
+--- Optimal Mission Path (Recursive) ---
+
+Step 0  | Start Depot   | Time: 0.00    s | Charge: 3955.00Wh
+  -> Action: Detour via Charger 1 to reach Task 1.
+     --- Leg 1: To Charger ---
+     Travel Time to CS:471.40  s
+     Energy to CS:     4342524.37 J (1206.26 Wh)
+     --- Charging ---
+     Charge Duration:  934.52  s
+     Charge From/To:   2748.74Wh -> 3955.00 Wh
+     --- Leg 2: From Charger ---
+     Travel Time fr CS:172.10  s
+     Energy from CS:   2963643.50 J (823.23 Wh)
+
+Step 1  | Task 1        | Time: 1680.00 s | Charge: 3115.00Wh
+  -> Action: Detour via Charger 1 to reach Task 2.
+     --- Leg 1: To Charger ---
+     Travel Time to CS:172.10  s
+     Energy to CS:     1588706.07 J (441.31 Wh)
+     --- Charging ---
+     Charge Duration:  964.34  s
+     Charge From/To:   2673.69Wh -> 3955.00 Wh
+     --- Leg 2: From Charger ---
+     Travel Time fr CS:330.22  s
+     Energy from CS:   5266041.54 J (1462.79 Wh)
+
+Step 2  | Task 2        | Time: 3240.00 s | Charge: 2485.00Wh
+  -> Action: Fly directly to Task 3.
+     Travel Time:      400.88  s
+     Leg Energy:       4916635.14 J (1365.73 Wh)
+
+Step 3  | Task 3        | Time: 3720.00 s | Charge: 1120.00Wh
+  -> Action: Detour via Charger 1 to reach Task 4.
+     --- Leg 1: To Charger ---
+     Travel Time to CS:73.32   s
+     Energy to CS:     771789.99 J (214.39 Wh)
+     --- Charging ---
+     Charge Duration:  1666.77 s
+     Charge From/To:   905.61Wh -> 3955.00 Wh
+     --- Leg 2: From Charger ---
+     Travel Time fr CS:346.43  s
+     Energy from CS:   5122904.44 J (1423.03 Wh)
+
+Step 4  | Task 4        | Time: 5880.00 s | Charge: 2520.00Wh
+  -> Action: Fly directly to Task 5.
+     Travel Time:      190.24  s
+     Leg Energy:       2921974.84 J (811.66 Wh)
+
+Step 5  | Task 5        | Time: 6120.00 s | Charge: 1715.00Wh
+  -> Action: Detour via Charger 1 to reach Task 6.
+     --- Leg 1: To Charger ---
+     Travel Time to CS:240.86  s
+     Energy to CS:     2175286.60 J (604.25 Wh)
+     --- Charging ---
+     Charge Duration:  1307.17 s
+     Charge From/To:   1110.75Wh -> 3780.00 Wh
+     --- Leg 2: From Charger ---
+     Travel Time fr CS:302.92  s
+     Energy from CS:   4139076.36 J (1149.74 Wh)
+
+Step 6  | Task 6        | Time: 8040.00 s | Charge: 2625.00Wh
+  -> Action: Fly directly to Task 7.
+     Travel Time:      244.13  s
+     Leg Energy:       3438806.08 J (955.22 Wh)
+
+Step 7  | Task 7        | Time: 8340.00 s | Charge: 1680.00Wh
+  -> Action: Detour via Charger 1 to reach Task 8.
+     --- Leg 1: To Charger ---
+     Travel Time to CS:168.99  s
+     Energy to CS:     1534002.20 J (426.11 Wh)
+     --- Charging ---
+     Charge Duration:  1250.31 s
+     Charge From/To:   1253.89Wh -> 3780.00 Wh
+     --- Leg 2: From Charger ---
+     Travel Time fr CS:333.35  s
+     Energy from CS:   4289477.97 J (1191.52 Wh)
+
+Step 8  | Task 8        | Time: 10140.00s | Charge: 2590.00Wh
+  -> Action: Fly directly to Task 9.
+     Travel Time:      567.01  s
+     Leg Energy:       6121405.41 J (1700.39 Wh)
+
+Step 9  | Task 9        | Time: 10800.00s | Charge: 875.00 Wh
+  -> Action: Detour via Charger 1 to reach Task 10.
+     --- Leg 1: To Charger ---
+     Travel Time to CS:244.16  s
+     Energy to CS:     2326647.50 J (646.29 Wh)
+     --- Charging ---
+     Charge Duration:  771.25  s
+     Charge From/To:   228.71Wh -> 2170.00 Wh
+     --- Leg 2: From Charger ---
+     Travel Time fr CS:259.02  s
+     Energy from CS:   3818677.42 J (1060.74 Wh)
+
+Step 10 | Task 10       | Time: 12120.00s | Charge: 1120.00Wh
+  -> Action: Fly directly to End Depot.
+     Travel Time:      468.56  s
+     Leg Energy:       4014926.53 J (1115.26 Wh)
+
+Step 11 | End Depot     | Time: 12600.00s | Charge: 0.00   Wh

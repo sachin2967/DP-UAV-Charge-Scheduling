@@ -1,0 +1,28 @@
+# Python
+*.pyc
+__pycache__/
+
+# Virtual environments
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.bak
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Build files
+*.egg
+dist/
+build/
+evrptw_instances/
+
