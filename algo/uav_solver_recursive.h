@@ -1,6 +1,6 @@
 #pragma once
 
-#include "data_framework.h" 
+#include "../datagen/data_framework.h" 
 #include <iostream>
 #include <vector>
 #include <cmath>

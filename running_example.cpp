@@ -7,8 +7,8 @@
 // 5. Print the step-by-step solution path.
 
 // We assume headers are in the parent directory in 'datagen' and 'algo' folders
-#include "../datagen/data_framework.h"     // Assumes this is your CORRECTED version
-#include "../algo/uav_solver_recursive.h" // Assumes this is your CORRECTED version
+#include "datagen/data_framework.h"
+#include "algo/uav_solver_recursive.h"
 
 #include <iostream>
 #include <iomanip> // Needed for setw, left

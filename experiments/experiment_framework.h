@@ -12,12 +12,17 @@
 #include <stdexcept>    // For exception handling
 #include <map>          // For experiment 4 results
 #include <cstdlib>      // For system()
+#ifndef _WIN32
+#include <unistd.h>      // For sysconf
+#endif
 #include <filesystem> 
 
-// --- ADDED: WINDOWS HEADERS FOR MEMORY ---
+// --- Platform headers for the memory probe ---
+#ifdef _WIN32
 #include <windows.h>
 #include <psapi.h> // For GetProcessMemoryInfo
-#pragma comment(lib, "psapi.lib") 
+#pragma comment(lib, "psapi.lib")
+#endif
 
 // Include your provided headers by looking up one directory (to ../)
 // and then into their respective folders.
@@ -74,8 +79,13 @@ void append_to_csv(const std::string& filename_base, const std::vector<std::stri
     file.close();
 }
 
-// --- (Corrected) HELPER: Windows Memory Reader ---
+// --- HELPER: process memory reader (kB) ---
+// Windows: commit charge (PagefileUsage), as used for the paper's figures.
+// Linux: virtual memory size from /proc/self/statm (an approximation, so absolute
+// numbers are not directly comparable with the Windows results).
+// Other platforms: returns -1.
 long get_current_memory_kb() {
+#ifdef _WIN32
     PROCESS_MEMORY_COUNTERS pmc;
     HANDLE hProcess = GetCurrentProcess();
     if (NULL == hProcess) return -1;
@@ -87,6 +97,16 @@ long get_current_memory_kb() {
     }
     CloseHandle(hProcess);
     return memory_kb;
+#elif defined(__linux__)
+    std::ifstream statm("/proc/self/statm");
+    long size_pages = 0;
+    if (statm >> size_pages) {
+        return size_pages * (sysconf(_SC_PAGESIZE) / 1024);
+    }
+    return -1;
+#else
+    return -1;
+#endif
 }
 
 // --- (MODIFIED) HELPER: Get Base Config ---
