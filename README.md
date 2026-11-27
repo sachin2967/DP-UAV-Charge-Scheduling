@@ -160,8 +160,9 @@ The solver computes:
 
 ## Contact
 
-For questions regarding the implementation:
+For implementation questions, please open an issue in this repository so the co-authors can follow the discussion.
 
-Sachin Yadav  
-Email: sachinyadav2967@gmail.com
+## Reuse and attribution
+
+This repository documents work with multiple co-authors. No software license is currently specified. Obtain permission from the authors before reusing or redistributing the implementation, manuscript material or experimental outputs.
 
