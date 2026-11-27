@@ -43,6 +43,9 @@ This repository is intended to support reproducibility of the experimental resul
 - C++ compiler supporting C++17 (GCC ≥ 7.0 or Clang recommended)
 - Linux / macOS / Windows
 - No external dependencies (Standard Library only)
+- The experiments report process memory: on Windows this is the commit charge used for the
+  paper; on Linux it is the virtual size from `/proc/self/statm` (an approximation), and on
+  other platforms it is unavailable (`-1`).
 
 Compile using:
 
@@ -76,13 +79,17 @@ run_example.exe
 
 ### Verification
 
-Compare the program output with:
+Compare the program output with `paper_running_example.log`. The headline result must match:
 
 ```
-paper_running_example.log
+Total Energy Cost: 59752525.98 Joules
+Total Energy Cost: 16597.92 Wh
 ```
 
-to verify correctness.
+Note: the current program prints an extended step-by-step DP trace and a different path
+listing format than the archived log, and the first detour may name a different charger
+when options tie on energy, so compare the total-energy lines rather than diffing the
+whole file.
 
 ---
 
